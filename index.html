@@ -1,1 +1,702 @@
-clearance form html css and javascript code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT Intern Clearance Form - FMC Abuja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #004d40, #1a2a6c);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-bottom: 5px solid #004d40;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(26, 42, 108, 0.1), rgba(0, 77, 64, 0.1));
+            z-index: 0;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #004d40;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            color: #004d40;
+            font-size: 28px;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            color: #1a2a6c;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .instructions {
+            background: #e8f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #004d40;
+        }
+        
+        .instructions h3 {
+            color: #004d40;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #004d40;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eaeaea;
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1 1 300px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #004d40;
+            box-shadow: 0 0 0 3px rgba(0, 77, 64, 0.2);
+        }
+        
+        .clearance-items {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #fff;
+        }
+        
+        .clearance-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .signature-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+        }
+        
+        .signature-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            height: 120px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-style: italic;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 200px;
+            justify-content: center;
+        }
+        
+        .btn-submit {
+            background: #004d40;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 77, 64, 0.3);
+        }
+        
+        .btn-submit:hover {
+            background: #00382e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 77, 64, 0.4);
+        }
+        
+        .btn-print {
+            background: #1a2a6c;
+            color: white;
+            box-shadow: 0 4px 6px rgba(26, 42, 108, 0.3);
+        }
+        
+        .btn-print:hover {
+            background: #0d1a4a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(26, 42, 108, 0.4);
+        }
+        
+        .btn-reset {
+            background: #555;
+            color: white;
+            box-shadow: 0 4px 6px rgba(85, 85, 85, 0.3);
+        }
+        
+        .btn-reset:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(85, 85, 85, 0.4);
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 14px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .status-indicator {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        
+        .status-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100px;
+        }
+        
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #777;
+        }
+        
+        .step-icon.active {
+            background: #004d40;
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 12px;
+            text-align: center;
+            color: #777;
+        }
+        
+        .step-label.active {
+            color: #004d40;
+            font-weight: 600;
+        }
+        
+        .step-connector {
+            height: 2px;
+            background: #e0e0e0;
+            flex-grow: 1;
+            margin-top: 20px;
+        }
+        
+        .step-connector.active {
+            background: #004d40;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .button-group {
+                display: none;
+            }
+            
+            header {
+                box-shadow: none;
+            }
+            
+            .status-indicator {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-group {
+                flex: 1 1 100%;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-overlay"></div>
+            <div class="logo-section">
+                <div class="logo">
+                    <img class="logo" src="./logoFav.jpg" alt="logo">
+                    <!-- <i class="fas fa-hospital-alt"></i> -->
+                </div>
+                <div>
+                    <h1>Federal Medical Centre, Abuja</h1>
+                    <h2>ICT Unit</h2>
+                    <div class="subtitle">Intern Clearance Form - Submitted to Admin</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- <div class="status-indicator">
+            <div class="status-step">
+                <div class="step-icon active">1</div>
+                <div class="step-connector active"></div>
+                <div class="step-label active">Intern Details</div>
+            </div>
+            <div class="status-step">
+                <div class="step-icon">2</div>
+                <div class="step-connector"></div>
+                <div class="step-label">Clearance</div>
+            </div>
+            <div class="status-step">
+                <div class="step-icon">3</div>
+                <div class="step-connector"></div>
+                <div class="step-label">Authorization</div>
+            </div>
+            <div class="status-step">
+                <div class="step-icon">4</div>
+                <div class="step-label">Complete</div>
+            </div>
+        </div> -->
+        
+        <div class="form-container">
+            <!-- <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> Instructions for Completion</h3>
+                <p>This form must be completed by all ICT interns at the conclusion of their internship program at FMC Abuja. Please fill in all required fields accurately and obtain necessary approvals before submission to the Admin Office.</p>
+                <ul>
+                    <li>Complete all sections of this form</li>
+                    <li>Ensure all ICT assets are returned before clearance</li>
+                    <li>Obtain signatures from relevant officers</li>
+                    <li>Submit completed form to Administration Office</li>
+                    <li>Form data will be stored in our central database</li>
+                </ul>
+            </div> -->
+            
+            <form id="clearanceForm">
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-user"></i> Intern Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Enter full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="regNumber">Intern Registration Number <span class="required">*</span></label>
+                            <input type="text" id="regNumber" name="regNumber" required placeholder="Enter Internship number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telNumber">Phone Number <span class="required">*</span></label>
+                            <input type="number" id="telNumber" name="telNumber" required placeholder="Enter Phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emrLoginID">EMR Login ID <span class="required">*</span></label>
+                            <input type="text" id="emrLoginID" name="emrLoginID" required placeholder="Enter EMR LOGIN ID">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Department of Attachment <span class="required">*</span></label>
+                            <select id="department" name="department" required>
+                                <option value="">Select Department</option>
+                                <option value="Laboratory">Laboratory</option>
+                                <option value="Nursing">Nursing</option>
+                                <option value="Pharmacy">Pharmacy</option>
+                                <option value="Physiotherapy">Physiotherapy</option>
+                                <option value="Radiotherapy">Radiotherapy</option>
+                                <option value="Medicine">Medicine</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="supervisor">Supervisor's Name <span class="required">*</span></label>
+                            <input type="text" id="supervisor" name="supervisor" required placeholder="Enter supervisor's name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startDate">Internship Start Date <span class="required">*</span></label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">Internship End Date <span class="required">*</span></label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-tasks"></i> Clearance Checklist</h3>
+                    <p>All items must be completed and verified for clearance approval.</p>
+                    
+                    <div class="clearance-items">
+                        <div class="clearance-item">
+                            <input type="checkbox" id="systemAccess" name="systemAccess" required>
+                            <label for="systemAccess">System access privileges revoked</label>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="clearance-items">
+                        <div class="clearance-item">
+                            <input type="checkbox" id="emailDeactivated" name="emailDeactivated" required>
+                            <label for="emailDeactivated">Email account deactivated</label>
+                        </div>
+                    </div>
+                    
+                    <div class="clearance-items">
+                        <div class="clearance-item">
+                            <input type="checkbox" id="equipmentReturned" name="equipmentReturned" required>
+                            <label for="equipmentReturned">All ICT equipment returned in good condition</label>
+                        </div>
+                    </div> -->
+                    
+                    <div class="form-group">
+                        <label for="remarks">Additional Remarks (if any)</label>
+                        <textarea id="remarks" name="remarks" rows="3" placeholder="Any additional comments or notes"></textarea>
+                    </div>
+                </div>
+                
+                <!-- <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-file-signature"></i> Authorization</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="internSignature">Intern's Declaration</label>
+                            <p>I hereby confirm that all information provided is accurate and that I have complied with all clearance requirements.</p>
+                            <div class="signature-box" id="internSignatureBox">Signature will be captured here</div>
+                            <div style="margin-top: 10px;">
+                                <input type="text" id="internName" placeholder="Full Name" required>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <input type="date" id="internDate" required>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <!-- <div class="form-row">
+                        <div class="form-group">
+                            <label for="supervisorSignature">Supervisor's Approval</label>
+                            <p>I confirm that the intern has completed all requirements and is cleared from the department.</p>
+                            <div class="signature-box" id="supervisorSignatureBox">Supervisor's signature</div>
+                            <div style="margin-top: 10px;">
+                                <input type="text" id="supervisorName" placeholder="Supervisor's Name" required>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <input type="date" id="supervisorDate" required>
+                            </div>
+                        </div> -->
+                        
+                        <div class="form-group">
+                            <label for="ictSignature">ICT Approval</label>
+                            <p>Clearance confirmation from ICT Unit.</p>
+                            <div class="signature-box" id="ictSignatureBox">ICT HOU signature</div>
+                            <div style="margin-top: 10px;">
+                                <input type="text" id="ictName" placeholder="ICT  Officer's Name" required>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <input type="date" id="ictDate" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Submit to Admin
+                    </button>
+                    <button type="button" class="btn-print" onclick="window.print()">
+                        <i class="fas fa-print"></i> Print Form
+                    </button>
+                    <button type="reset" class="btn-reset">
+                        <i class="fas fa-redo"></i> Reset Form
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Federal Medical Centre, Abuja | ICT Unit</p>
+        <p>Abuja, Nigeria | Phone: +234 9 460 1000 | Email: ict@fmcabuja.gov.ng</p>
+        <p>© 2025 FMC Abuja. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('clearanceForm');
+            const today = new Date();
+            const endDate = new Date();
+            endDate.setMonth(today.getMonth() + 3);
+            
+            // Set default dates
+            document.getElementById('startDate').valueAsDate = today;
+            document.getElementById('endDate').valueAsDate = endDate;
+            //document.getElementById('internDate').valueAsDate = today;
+            //document.getElementById('supervisorDate').valueAsDate = today;
+            document.getElementById('ictDate').valueAsDate = today;
+            
+            // Signature capture
+            const signatureBoxes = document.querySelectorAll('.signature-box');
+            signatureBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    this.style.background = '#e0f2f1';
+                    this.innerHTML = '<i class="fas fa-signature"></i> Signature captured';
+                    this.style.fontStyle = 'normal';
+                });
+            });
+            
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validation
+                const requiredFields = document.querySelectorAll('input[required], select[required]');
+                let valid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        valid = false;
+                        field.style.borderColor = 'red';
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                });
+                
+                if (valid) {
+                    //
+                    
+                    // Show success message
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Clearance Submitted!',
+                        text: 'Your clearance form has been successfully submitted to the Admin Office.',
+                        confirmButtonColor: '#004d40',
+                        confirmButtonText: 'OK'
+                    });
+                    
+                    // Simulate storing data in Google Sheets
+                    const formData = {
+                        fullName: document.getElementById('fullName').value,
+                        regNumber: document.getElementById('regNumber').value,
+                        telNumber: document.getElementById('telNumber').value,
+                        emrLoginId: document.getElementById('emrLoginID').value,
+                        department: document.getElementById('department').value,
+                        supervisor: document.getElementById('supervisor').value,
+                        startDate: document.getElementById('startDate').value,
+                        endDate: document.getElementById('endDate').value,
+                        systemAccess: document.getElementById('systemAccess').checked ? 'Yes' : 'No',
+                        //emailDeactivated: document.getElementById('emailDeactivated').checked ? 'Yes' : 'No',
+                        //equipmentReturned: document.getElementById('equipmentReturned').checked ? 'Yes' : 'No',
+                        remarks: document.getElementById('remarks').value,
+                        //internName: document.getElementById('internName').value,
+                        //internDate: document.getElementById('internDate').value,
+                        //supervisorName: document.getElementById('supervisorName').value,
+                        //supervisorDate: document.getElementById('supervisorDate').value,
+                        ictName: document.getElementById('ictName').value,
+                        ictDate: document.getElementById('ictDate').value,
+                        //submissionDate: new Date().toISOString()
+                        submissionDate: document.getElementById('ictDate').value,
+                    };
+                    
+                    //console.log('Form data to be stored:', formData);
+
+                    // Simulate storing data in Google Sheets
+                    fetch("https://script.google.com/macros/s/AKfycbykUd-Cyq1ZnK3T0gNCtPT5rWIOhMac8Hd54W8TCteHClCpRZbqSjPs5huSX2-xCRiD/exec", {
+                        method: "POST",
+                        body: JSON.stringify(formData),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Success:", data);
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+
+                    
+                    // In a real implementation, this would be sent to a Google Sheet via:
+                    // 1. Google Apps Script endpoint
+                    // 2. Form submission to Google Forms
+                    // 3. Direct API integration
+                    
+                    // Reset form after successful submission
+                    form.reset();
+                    
+                    // Reset signature boxes
+                    signatureBoxes.forEach(box => {
+                        box.style.background = '#f9f9f9';
+                        box.style.fontStyle = 'italic';
+                        box.innerHTML = box.id.includes('intern') ? 
+                            'Signature will be captured here' : 
+                            box.id.includes('supervisor') ? 
+                            'Supervisor\'s signature' : 
+                            'Admin signature';
+                    });
+                    
+                    // Reset dates
+                    document.getElementById('startDate').valueAsDate = today;
+                    document.getElementById('endDate').valueAsDate = endDate;
+                    document.getElementById('internDate').valueAsDate = today;
+                    //document.getElementById('supervisorDate').valueAsDate = today;
+                    document.getElementById('adminDate').valueAsDate = today;
+                    
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Missing Information',
+                        text: 'Please fill in all required fields marked with *',
+                        confirmButtonColor: '#1a2a6c'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
